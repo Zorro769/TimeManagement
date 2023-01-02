@@ -1,0 +1,22 @@
+﻿<Window x:Class="Time.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Time"
+        mc:Ignorable="d"
+        Title="FApp" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dgTodoList" FontSize="16" FontWeight="Bold" Margin="10" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = CreationDate}" IsReadOnly="False" Header="CreationDate" Width="180">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path = FinishDate}" IsReadOnly="False" Header="FinishDate" Width="180">
+                </DataGridTextColumn>
+                <DataGridCheckBoxColumn Binding="{Binding Path = IsDone,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" Header="Done" Width="80">
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
