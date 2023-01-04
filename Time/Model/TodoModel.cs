@@ -1,7 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Toolkit.Uwp.Notifications;
-
+using Windows.UI.Xaml;
+using RoutedEventArgs = System.Windows.RoutedEventArgs;
 
 namespace Time.Model
 {
@@ -11,6 +14,7 @@ namespace Time.Model
 
         private string _text;
         private bool _isDone;
+		private bool _start;
         public DateTime _finishDate;
 
 
@@ -61,29 +65,23 @@ namespace Time.Model
 			}
 		}
 
-		
+        public bool Start
+        {
+            get { return _start; }
+            set
+            {
+                if (_start == value)
+                    return;
+                _start = value;
+                OnPropertyChanged("Start");
+            }
+        }
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		public void CheckTimeAndSendNotify()
-		{
-			while (true)
-			{
-				if(_finishDate == DateTime.Now)
-				{
-                    new ToastContentBuilder()
-					.AddArgument("action", "viewConversation")
-					.AddArgument("conversationId", 9813)
-					.AddText("Andrew sent you a picture")
-					.AddText("Check this out, The Enchantments in Washington!")
-					.Show();
-                }
-			}
+        public event PropertyChangedEventHandler PropertyChanged; 
 
-		}
-
-		protected virtual void OnPropertyChanged(string propertyName = "")
+        protected virtual void OnPropertyChanged(string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
-    }
+	}
 }

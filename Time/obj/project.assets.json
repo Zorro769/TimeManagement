@@ -1585,11 +1585,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Public\\Documents\\Time\\Time\\Time.csproj",
+      "projectUniqueName": "C:\\Users\\Public\\Documents\\TimeManagement\\TimeManagement\\Time\\Time.csproj",
       "projectName": "Time",
-      "projectPath": "C:\\Users\\Public\\Documents\\Time\\Time\\Time.csproj",
+      "projectPath": "C:\\Users\\Public\\Documents\\TimeManagement\\TimeManagement\\Time\\Time.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Public\\Documents\\Time\\Time\\obj\\",
+      "outputPath": "C:\\Users\\Public\\Documents\\TimeManagement\\TimeManagement\\Time\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

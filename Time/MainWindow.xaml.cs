@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using Time.Model;
 using Time.Services;
+using System.Windows.Threading;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Linq;
 
@@ -10,13 +11,37 @@ namespace Time
 {
     public partial class MainWindow : Window
     {
+        private TodoModel tmp;
+        private int i = 0;
         private readonly string PATH = $"{Environment.CurrentDirectory}\\todoDataList.json";
         private BindingList<TodoModel> _todoDateList;
         private FileIOService _fileIOService;
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer disTmr = new DispatcherTimer();
+            disTmr.Tick += new EventHandler(disTmr_Tick);
+            disTmr.Interval = new TimeSpan(0, 0, 1);
+            disTmr.Start();
+
         }
+
+        private void disTmr_Tick(object sender, EventArgs e)
+        {
+            TxtBlochjara.Text = DateTime.Now.ToString();
+
+            if(i < _todoDateList.Count())
+                tmp = _todoDateList[i];
+                if (tmp._finishDate.ToString() == DateTime.Now.ToString())
+                {
+                new ToastContentBuilder()
+                    .AddText("Time for this business is over")
+                    .AddText("Move to the next task!!!")
+                    .Show();
+                    i++;
+            }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _todoDateList = new BindingList<TodoModel>();
@@ -56,29 +81,6 @@ namespace Time
                 }
                 
             }
-            CheckTime();
-        }
-        private void CheckTime()
-        {
-            
-            TodoModel todoModelTmp = new TodoModel();
-            for(int i=0;i<_todoDateList.Count();i++)
-            {
-                todoModelTmp = _todoDateList[i];
-                if (todoModelTmp._finishDate == DateTime.Now)
-                {
-                    new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Andrew sent you a picture")
-                    .AddText("Check this out, The Enchantments in Washington!")
-                    .Show();
-                    break;
-                }
-                if (i == _todoDateList.Count() - 1)
-                    i = 0;
-            }
-            
-        }
+           }
     }
 }

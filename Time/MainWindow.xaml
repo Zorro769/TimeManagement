@@ -15,8 +15,10 @@
                 </DataGridTextColumn>
                 <DataGridCheckBoxColumn Binding="{Binding Path = IsDone,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" Header="Done" Width="80">
                 </DataGridCheckBoxColumn>
-                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="200"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock x:Name="TxtBlochjara" Margin="10" FontWeight="Bold" FontSize="20"
+               Text="Contoso Corporation" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
 </Window>
