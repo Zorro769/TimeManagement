@@ -11,7 +11,7 @@ namespace Time
 {
     public partial class MainWindow : Window
     {
-        private TodoModel tmp;
+        private TodoModel tmp,tmp2;
         private int i = 0;
         private readonly string PATH = $"{Environment.CurrentDirectory}\\todoDataList.json";
         private BindingList<TodoModel> _todoDateList;
@@ -28,17 +28,27 @@ namespace Time
 
         private void disTmr_Tick(object sender, EventArgs e)
         {
-            TxtBlochjara.Text = DateTime.Now.ToString();
+            TxtBlochjara.Text = "Today " + DateTime.Now.ToString("dddd,MMMM dd");
 
-            if(i < _todoDateList.Count())
+            if (i + 1 < _todoDateList.Count())
+            {
                 tmp = _todoDateList[i];
-                if (tmp._finishDate.ToString() == DateTime.Now.ToString())
+                tmp2 = _todoDateList[i + 1];
+            }
+            if (tmp._finishDate.ToString() == DateTime.Now.ToString())
                 {
                 new ToastContentBuilder()
-                    .AddText("Time for this business is over")
-                    .AddText("Move to the next task!!!")
+                    .AddText("Time for " + tmp._text + " is over")
+                    .AddText("Move to " + tmp2._text)
                     .Show();
                     i++;
+            }
+            if (i + 1 == _todoDateList.Count())
+            {
+                new ToastContentBuilder()
+              .AddText("Good job,bye")
+              .Show();
+                i++;
             }
         }
 

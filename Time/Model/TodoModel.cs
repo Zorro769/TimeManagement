@@ -12,7 +12,7 @@ namespace Time.Model
     {
         public  DateTime _createDate;
 
-        private string _text;
+        public string _text;
         private bool _isDone;
 		private bool _start;
         public DateTime _finishDate;

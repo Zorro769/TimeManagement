@@ -5,20 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Time"
         mc:Ignorable="d"
-        Title="FApp" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="TimeManagement" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dgTodoList" FontSize="16" FontWeight="Bold" Margin="10" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgTodoList" FontSize="15" FontWeight="Bold" Margin="10,40,10,5"  AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path = CreationDate}" IsReadOnly="False" Header="CreationDate" Width="180">
+                <DataGridTextColumn Binding="{Binding Path = FinishDate}" FontWeight="Bold" IsReadOnly="False" Header="FinishDate"  Width="180">
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path = FinishDate}" IsReadOnly="False" Header="FinishDate" Width="180">
-                </DataGridTextColumn>
-                <DataGridCheckBoxColumn Binding="{Binding Path = IsDone,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" Header="Done" Width="80">
-                </DataGridCheckBoxColumn>
-                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="TxtBlochjara" Margin="10" FontWeight="Bold" FontSize="20"
-               Text="Contoso Corporation" HorizontalAlignment="Center" VerticalAlignment="Center" />
+               Text="Today" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        
     </Grid>
+ 
 </Window>
