@@ -30,25 +30,26 @@ namespace Time
         {
             TxtBlochjara.Text = "Today " + DateTime.Now.ToString("dddd,MMMM dd");
 
-            if (i + 1 < _todoDateList.Count())
-            {
+            if (i < _todoDateList.Count())
                 tmp = _todoDateList[i];
-                tmp2 = _todoDateList[i + 1];
-            }
+            
             if (tmp._finishDate.ToString() == DateTime.Now.ToString())
                 {
-                new ToastContentBuilder()
+                if(i + 1 == _todoDateList.Count())
+                {
+                    new ToastContentBuilder()
+                     .AddText("Good job,bye")
+                     .Show();
+                    i++;
+                }
+                else {
+                    tmp2 = _todoDateList[i + 1];
+                    new ToastContentBuilder()
                     .AddText("Time for " + tmp._text + " is over")
                     .AddText("Move to " + tmp2._text)
                     .Show();
                     i++;
-            }
-            if (i + 1 == _todoDateList.Count())
-            {
-                new ToastContentBuilder()
-              .AddText("Good job,bye")
-              .Show();
-                i++;
+                }
             }
         }
 
