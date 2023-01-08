@@ -5,17 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Time"
         mc:Ignorable="d"
-        Title="TimeManagement" Height="450" Width="800" Loaded="Window_Loaded">
+        MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen"
+        Title="TimeManagement" Loaded="Window_Loaded"
+        FontFamily="Roboto">
     <Grid>
-        <DataGrid x:Name="dgTodoList" FontSize="15" FontWeight="Bold" Margin="10,40,10,5"  AutoGenerateColumns="False">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#00ff87" Offset="0.0" />
+                <GradientStop Color="#60efff" Offset="0.5" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <DataGrid x:Name="dgTodoList" FontSize="15" FontWeight="Bold" Margin="10,40,10,5"  AutoGenerateColumns="False" Background="Transparent" RowBackground="Transparent">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path = FinishDate}" FontWeight="Bold" IsReadOnly="False" Header="FinishDate"  Width="180">
+                <DataGridTextColumn Binding="{Binding Path = FinishDate}" FontWeight="Bold" IsReadOnly="False" Header="         Start time"  Width="180">
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Todo" Width="*"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Binding="{Binding Path = isDone}" Header="       Done" Width="100">
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="        Todo" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="TxtBlochjara" Margin="10" FontWeight="Bold" FontSize="20"
-               Text="Today" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBlock x:Name="TxtBlochjara" Margin="55 10 10 10" FontWeight="Bold" FontSize="20"
+               Text="Today is " HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBlock x:Name="TxtNameOfProgram" Text="Your daily time management" Margin="10" FontWeight="Bold" FontSize="20"
+                   HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Image Source="/Images/square_clock.png" Margin="10 0 10 10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" ></Image>
+        <Image Source="/Images/calendar.png" Margin="10 0 285 10" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="40"></Image>
+        <Image Source="/Images/alarm_clock.png" Width="25" Height="25"
+               VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20 40 10 10"></Image>
+        <Image Source="/Images/checkmark.png" Width="25" Height="25" 
+               HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-325 42 30 30"></Image>
+        <Image Source="/Images/list.png" Width="25" Height="25" 
+               HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-120 42 30 30"></Image>
         
     </Grid>
  
