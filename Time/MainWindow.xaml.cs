@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.ComponentModel;
 using System.Windows;
 using Time.Model;
@@ -37,16 +38,20 @@ namespace Time
                 {
                 if(i + 1 == _todoDateList.Count())
                 {
+                    var imageUrl = "file:///" + Path.GetFullPath("images/done_it.png");
                     new ToastContentBuilder()
+                     .AddInlineImage(new Uri(imageUrl))
                      .AddText("Good job,bye")
                      .Show();
                     i++;
                 }
                 else {
+                    var imageUrl = "file:///" + Path.GetFullPath("images/notify_pic.png");
                     tmp2 = _todoDateList[i + 1];
                     new ToastContentBuilder()
-                    .AddText("Time for " + tmp._text + " is over")
-                    .AddText("Move to " + tmp2._text)
+                    .AddInlineImage(new Uri(imageUrl))
+                    .AddText("It's time for " + tmp._text)
+                    .AddText("You have to do it until " + tmp2._finishDate.ToString("h:mm tt"))
                     .Show();
                     i++;
                 }
