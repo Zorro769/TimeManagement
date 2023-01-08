@@ -39,6 +39,10 @@ namespace Time
                 {
                     new ToastContentBuilder()
                      .AddText("Good job,bye")
+                      .AddInlineImage(new Uri("https://picsum.photos/360/202?image=883"))
+
+    // Profile (app logo override) image
+    .AddAppLogoOverride(new Uri("ms-appdata:///local/Andrew.jpg"), ToastGenericAppLogoCrop.Circle)
                      .Show();
                     i++;
                 }
@@ -47,6 +51,10 @@ namespace Time
                     new ToastContentBuilder()
                     .AddText("Time for " + tmp._text + " is over")
                     .AddText("Move to " + tmp2._text)
+                     .AddInlineImage(new Uri("https://picsum.photos/360/202?image=883"))
+
+    // Profile (app logo override) image
+    .AddAppLogoOverride(new Uri("ms-appdata:///local/Andrew.jpg"), ToastGenericAppLogoCrop.Circle)
                     .Show();
                     i++;
                 }
